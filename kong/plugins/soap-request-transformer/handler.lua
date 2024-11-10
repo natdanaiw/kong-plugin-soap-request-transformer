@@ -37,6 +37,8 @@ function SoapTransformerHandler.convertXMLtoJSON(xml, conf)
     local SOAPPrefix = "SOAP-ENV"
     if string.match(xml,"soapenv:Envelope") then
         SOAPPrefix = "soapenv"
+    elseif string.match(xml,"soap12:Envelope") then
+        SOAPPrefix = "soap12"
     end
 
     local t = xmlHandler.root[SOAPPrefix .. ":Envelope"][SOAPPrefix .. ":Body"]
